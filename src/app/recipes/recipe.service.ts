@@ -28,4 +28,8 @@ getRecipe(){
 addIngredientsToShoppingList(ingredients:Ingredient[]){
   this.shoppingService.addIngredients(ingredients)
 }
+getRecipeId(index:number){
+  return this.recipes[index];
+
+}
 }

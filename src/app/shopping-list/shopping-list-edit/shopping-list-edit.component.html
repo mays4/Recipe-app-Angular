@@ -1,11 +1,12 @@
 <div class="row">
   <div class="col-xs-12">
-    <form>
+    <form (ngSubmit)="onAdd(f)" #f="ngForm">
       <div class="row">
         <div class="clo-sm-5 from-group">
           <label for="name"
             >Name
-            <input type="text" class="form-control" id="name" #nameInput />
+            <input type="text" class="form-control" id="name" name="name"
+            ngModel/>
           </label>
         </div>
         <div class="clo-sm-2 from-group">
@@ -15,14 +16,15 @@
               type="number"
               class="form-control"
               id="amount"
-              #amountInput
+              name="amount"
+              ngModel
             />
           </label>
         </div>
         <div class="row">
           <div class="col-xs-12">
             <button type="submit" class="btn btn-success"
-            (click)="onAdd()">
+            >
               Add
             </button>
             <button type="button" class="btn btn-danger">Delete</button>

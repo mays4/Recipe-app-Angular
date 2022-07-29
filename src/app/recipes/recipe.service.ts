@@ -13,7 +13,7 @@ export class RecipeService{
     new Ingredient('onion',1)
     ]),
 
-    new Recipe('Another Test Recipe', 'This is simply a test', 'https://elavegan.com/wp-content/uploads/2021/10/hand-stirring-creamy-tomato-sauce-vegetable-pasta-in-black-skillet.jpg',
+    new Recipe('Another Test Recipe', 'This is simply a test of burger', 'https://elavegan.com/wp-content/uploads/2021/10/hand-stirring-creamy-tomato-sauce-vegetable-pasta-in-black-skillet.jpg',
     [new Ingredient('pasta',2),
     new Ingredient('meat',1),
     new Ingredient('onion',2),

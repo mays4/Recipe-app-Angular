@@ -1,16 +1,16 @@
-<a style="cursor: pointer;" class="list-group-item clearfix"
+<a style="cursor: pointer;" class="list-group-item clearfix item" style="border:1px solid black; ; margin:3px"
    [routerLink]="[index]"
    routerLinkActive="active"
 >
   <div class="pull-left" >
     <h4 class="list-group-item-heading">{{ recipe.name }}</h4>
-    <p class="list-group-item-text">{{ recipe.description }}</p>
+    <p class="list-group-item-text" >{{ recipe.description }}</p>
     <span class="pull-right">
       <img
         [src]="recipe.imagePath"
         alt="{{ recipe.name }}"
         class="image-responsive"
-        style="max-height: 50px"
+        style="max-height: 50px;"
       />
     </span>
   </div>

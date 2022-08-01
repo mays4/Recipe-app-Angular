@@ -43,10 +43,11 @@
 <div class="row">
   <div class="col-xs-12">{{ recipe.description }}</div>
 </div>
-<div class="row">
-  <div class="col-xs-12">
-    <ul class="list-group">
-      <li class="list-group-item" *ngFor="let ingredent of recipe.ingredients">{{ingredent.name}} - {{ingredent.amount}}
+<div class="row" >
+  <div class="col-xs-12" >
+    <ul class="list-group" >
+      <li class="list-group-item"  *ngFor="let ingredent of recipe.ingredients" style="margin-top:5px;box-shadow: 2px 2px black" >
+        {{ingredent.name}} - {{ingredent.amount}}
 
       </li>
 

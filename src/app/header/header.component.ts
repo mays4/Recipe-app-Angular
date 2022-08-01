@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Output } from "@angular/core";
+import { DataStorageService } from "../shared/data-storge.service";
 
 @Component({
   selector:'app-header',
@@ -10,4 +11,11 @@ export class HeaderComponent{
  onSelect(feature:string){
      this.featureSelected.emit(feature);
  }
+ constructor(private dataStorgeService :DataStorageService){}
+ onSaveData(){
+  this.dataStorgeService.storeRecipe()
+ }
+ onFetchData(){
+    this.dataStorgeService.fetchRecipe().subscribe();
+}
 }

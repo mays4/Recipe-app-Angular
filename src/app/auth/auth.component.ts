@@ -1,7 +1,9 @@
-import { Component} from '@angular/core';
+import { Component, ComponentFactoryResolver, OnDestroy, ViewChild} from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Observable } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
+import { AlertComponent } from '../shared/alert/alert.component';
+import { PlaceHolderDirective } from '../shared/placeholder/placeholder.directive';
 import { AuthResponseData, AuthService } from './auth.service';
 
 @Component({
@@ -9,12 +11,13 @@ import { AuthResponseData, AuthService } from './auth.service';
   templateUrl: './auth.component.html',
   styleUrls: ['./auth.component.css']
 })
-export class AuthComponent {
+export class AuthComponent implements OnDestroy {
   isloginMode = true;
   isLoading=false;
-
+ @ViewChild(PlaceHolderDirective) alertHost!:PlaceHolderDirective;
   error:string |null= null;
-  constructor(private authService:AuthService,private router:Router) { }
+  private closeSub!: Subscription
+  constructor(private authService:AuthService,private router:Router,private componentFactoryResolver:ComponentFactoryResolver) { }
 
   onSwtchingMode(){
     this.isloginMode =!this.isloginMode
@@ -45,10 +48,31 @@ export class AuthComponent {
      },errorMessage=>{
       console.log(errorMessage);
       this.error=errorMessage
+      this.showErrorAlert(errorMessage)
       this.isLoading=false;
      })
 
     form.reset()
+  }
+  onCloseEvent(){
+    this.error=null;
+  }
+  ngOnDestroy(): void {
+    if(this.closeSub){
+      this.closeSub.unsubscribe();
+    }
+  }
+  private showErrorAlert(message:string){
+    const alertCampFactory=this.componentFactoryResolver.resolveComponentFactory(AlertComponent)
+    const hostAlertContainerRef = this.alertHost.viewContainerView;
+    hostAlertContainerRef.clear();
+    const componentRef = hostAlertContainerRef.createComponent(AlertComponent);
+    componentRef.instance.message=message;
+    this.closeSub = componentRef.instance.close.subscribe(()=>{
+       this.closeSub.unsubscribe();
+       hostAlertContainerRef.clear();
+
+    });
   }
 
 }

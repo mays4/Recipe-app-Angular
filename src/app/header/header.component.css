@@ -1,6 +1,9 @@
 .right{
-  offset: 700px;
-  /* padding-left :800px; */
+  /* offset: 700px; */
+  margin-left:750px;
 
 
+}
+.right-nav{
+ margin-left: 50px;
 }

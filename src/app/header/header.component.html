@@ -50,10 +50,10 @@
 
 
       </ul>
-      <ul class="nav navbar-nav navbar-right"  *ngIf="isAuthanticated">
+      <ul class="nav navbar-nav navbar-right right"  *ngIf="isAuthanticated">
         <a  style="cursor: pointer;"(click)="onLogout()">Logout</a>
       </ul>
-      <ul class="navbar-nav right" appDropdown  *ngIf="isAuthanticated">
+      <ul class="navbar-nav right-nav" appDropdown  *ngIf="isAuthanticated">
         <li class="nav-item dropdown" >
           <a
             class="nav-link dropdown-toggle"

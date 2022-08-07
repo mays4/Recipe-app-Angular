@@ -7,10 +7,12 @@ import { AppRoutingModule } from './app-routing.module';
 import { SharedModule } from './shared/shared.module';
 import { CoreModule } from './core.module';
 import {StoreModule} from '@ngrx/store'
-import { shoppingListReducer } from './shopping-list/store/shopping-list.reducer';
+// import { shoppingListReducer } from './shopping-list/store/shopping-list.reducer';
+import {EffectsModule} from '@ngrx/effects'
 
 
 import * as fromApp from './store/app.reducer';
+import { AuthEffects } from './auth/store/auth.effects';
 
 
 
@@ -26,6 +28,7 @@ import * as fromApp from './store/app.reducer';
     SharedModule,
     // StoreModule.forRoot({shoppingList:shoppingListReducer}),
     StoreModule.forRoot(fromApp.appReducer),
+    EffectsModule.forRoot([AuthEffects]),
     CoreModule,
 
   ],

@@ -1,35 +1,55 @@
-import { Action } from "@ngrx/store";
+import { Action } from '@ngrx/store';
 
-export const LOGIN='LOGIN';
-export const AUTO_LOGIN='AUTO_LOGIN';
-export const LOGOUT='LOGOUT';
-export const AUTHENTICATIESUCCESS='AUTHENTICATIESUCCESS';
-export const AUTHENTICATIEFAIL='AUTHENTICATIEFAIL';
-export const SINGUP='SIGNUP';
-export const CLEARERROR='CLEARERROR';
+export const LOGIN_START = '[Auth] Login start';
+export const AUTO_LOGIN = '[Auth] Auto Login';
+export const LOGOUT = '[Auth] Logout';
+export const AUTHENTICATIESUCCESS = '[Auth] Login Success';
+export const AUTHENTICATIEFAIL = '[Auth] login Fail';
+export const SINGUP = '[Auth] SignUp';
+export const CLEAR_ERROR = '[Auth] Clear Error';
 
-
-export class Login implements Action{
- readonly type =LOGIN;
- constructor(public payload:{email:string, userId:string, token:string, expirationDate:Date}){}
+export class AuthenticateSuccess implements Action {
+  readonly type = AUTHENTICATIESUCCESS;
+  constructor(
+    public payload: {
+      email: string;
+      userId: string;
+      token: string;
+      expirationDate: Date;
+    }
+  ) {}
 }
-export class AutoLogin implements Action{
-  readonly type =AUTO_LOGIN;
- }
-export class SignUp implements Action{
-  readonly type =SINGUP;
- }
- export class Logout implements Action{
-  readonly type =LOGOUT;
- }
- export class AuthenticateSuccess implements Action{
-  readonly type =AUTHENTICATIESUCCESS;
- }
- export class AuthenticateFail implements Action{
-  readonly type =AUTHENTICATIEFAIL;
- }
- export class ClearError implements Action{
-  readonly type =CLEARERROR;
- }
 
- export type AuthActionsType =Login | SignUp |AutoLogin | Logout | AuthenticateSuccess |AuthenticateFail |ClearError
+export class LoginStart implements Action {
+  readonly type = LOGIN_START;
+  constructor(public payload: { email: string; password: string }) {}
+}
+
+export class AutoLogin implements Action {
+  readonly type = AUTO_LOGIN;
+}
+export class SignUp implements Action {
+  readonly type = SINGUP;
+  constructor(public payload: { email: string; password: string }) {}
+}
+export class Logout implements Action {
+  readonly type = LOGOUT;
+}
+
+export class AuthenticateFail implements Action {
+  readonly type = AUTHENTICATIEFAIL;
+  constructor(public payload: string) {}
+}
+
+export class ClearError implements Action {
+  readonly type = CLEAR_ERROR;
+}
+
+export type AuthActionsType =
+  | SignUp
+  | AutoLogin
+  | Logout
+  | AuthenticateSuccess
+  | AuthenticateFail
+  | ClearError
+  | LoginStart;

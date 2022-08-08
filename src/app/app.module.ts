@@ -13,6 +13,7 @@ import {EffectsModule} from '@ngrx/effects'
 
 import * as fromApp from './store/app.reducer';
 import { AuthEffects } from './auth/store/auth.effects';
+import { RecipeEffects } from './recipes/store/recipe.effects';
 
 
 
@@ -28,7 +29,7 @@ import { AuthEffects } from './auth/store/auth.effects';
     SharedModule,
     // StoreModule.forRoot({shoppingList:shoppingListReducer}),
     StoreModule.forRoot(fromApp.appReducer),
-    EffectsModule.forRoot([AuthEffects]),
+    EffectsModule.forRoot([AuthEffects,RecipeEffects]),
     CoreModule,
 
   ],

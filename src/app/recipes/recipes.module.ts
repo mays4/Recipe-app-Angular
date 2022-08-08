@@ -12,6 +12,7 @@ import { ReicpesRoutingModule } from "./recipes-routing.module";
 import { RecipesComponent } from "./recipes.component";
 
 
+
 @NgModule({declarations:[
   RecipesComponent,
   RecipeDetailComponent,
@@ -19,6 +20,7 @@ import { RecipesComponent } from "./recipes.component";
   RecipeListComponent,
   RecipeStartComponent,
   RecipeEditComponent,
+
 ],
 imports:[RouterModule,SharedModule,ReactiveFormsModule,ReicpesRoutingModule],
 

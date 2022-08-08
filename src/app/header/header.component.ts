@@ -6,6 +6,7 @@ import  * as AuthActions from '../auth/store/auth.actions';
 import * as fromApp from '../store/app.reducer';
 import { Store } from '@ngrx/store';
 import { DataStorageService } from "../shared/data-storge.service";
+import * as RecipeActions from '../recipes/store/recipe.actions'
 
 @Component({
   selector:'app-header',
@@ -35,10 +36,13 @@ ngOnInit(): void {
   })
 }
  onSaveData(){
-  this.dataStorgeService.storeRecipe()
+  this.store.dispatch(new RecipeActions.StoreRecipes());
+
+  // this.dataStorgeService.storeRecipe()
  }
  onFetchData(){
-    this.dataStorgeService.fetchRecipe().subscribe();
+  this.store.dispatch(new RecipeActions.FetchRecipes())
+    // this.dataStorgeService.fetchRecipe().subscribe();
 }
 onLogout(){
   this.store.dispatch(new AuthActions.Logout());
